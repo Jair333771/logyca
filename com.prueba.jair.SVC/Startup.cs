@@ -24,26 +24,11 @@ namespace com.prueba.jair.SVC
             services.AddDbContext<ApiDbContext>(
                     opt => opt.UseNpgsql(Configuration.GetConnectionString("Default"),
                     opt => opt.MigrationsAssembly("com.prueba.jair.SVC")
-                )
-            );
+                ));
 
-            services.AddMvc().AddNewtonsoftJson(options =>
-            {
-                  options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            });
-
-            services.AddControllersWithViews().AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-            });
-
-            services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.IgnoreNullValues = true;
-                })
-                .AddNewtonsoftJson(options =>
-                {
+            services.AddControllers().AddNewtonsoftJson(options => {
+                    options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.Ignore;
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
         }

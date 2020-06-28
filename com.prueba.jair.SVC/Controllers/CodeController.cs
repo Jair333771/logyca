@@ -34,9 +34,9 @@ namespace com.prueba.jair.SVC.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetEnterpriseByCodeId(int codeid)
+        public IActionResult GetEnterpriseByCodeId(int id)
         {
-            var response = codeBll.GetById(codeid);
+            var response = codeBll.GetEnterpriseByCodeId(id);
             return StatusCode((int)response.Status, response);
         }
     }

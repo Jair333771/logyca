@@ -21,12 +21,12 @@ namespace com.prueba.jair.Core.models
             new MessageModel {
                 Id = 2,
                 Description = "No se han encontrado resultados",
-                Status = HttpStatusCode.NoContent
+                Status = HttpStatusCode.NotFound
             },
             new MessageModel {
                 Id = 3,
                 Description = "El dato que ingreso no existe en la bd",
-                Status = HttpStatusCode.NotFound
+                Status = HttpStatusCode.BadRequest
             },
             new MessageModel {
                 Id = 4,
