@@ -14,7 +14,7 @@ namespace com.prueba.jair.DAL.entities
         public long Nit { get; set; }
 
         [Required(ErrorMessage = "El Gln es requerido")]
-        public decimal Gln { get; set; }
+        public long Gln { get; set; }
 
         public virtual ICollection<Code> CodeList { get; set; }
     }

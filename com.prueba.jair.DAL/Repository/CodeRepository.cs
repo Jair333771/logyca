@@ -23,11 +23,11 @@ namespace com.prueba.jair.DAL.Repository
             return list;
         }
 
-        public Enterprise GetEnterpriseByCodeId(int codeid)
+        public Enterprise GetEnterpriseByCodeId(int id)
         {
             var obj = context.Enterprises
                 .Join(context.Code, e => e.Id, c => c.OwnerId, (E, C) => new { E, C })
-                .Where(x => x.C.Id == codeid)
+                .Where(x => x.C.Id == id)
                 .Select(r => r.E).FirstOrDefault();
 
             return obj;
