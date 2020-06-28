@@ -1,7 +1,6 @@
 ﻿using com.prueba.jair.Core.interfaces;
 using com.prueba.jair.Core.models;
 using com.prueba.jair.DAL.context;
-using com.prueba.jair.DAL.entities;
 using com.prueba.jair.DAL.Repository;
 using System;
 using System.Collections.Generic;
@@ -47,11 +46,10 @@ namespace com.prueba.jair.BLL.logic
             var message = new MessageModel();
 
             var list = repo.GetAllByOwnerId(id);
-            SetObjectResponse(list, message);
+            SetListResponse(list, message);
 
             return response;
         }
-
 
         public ResponseModel GetEnterpriseByCodeId(int codeid = 0)
         {
@@ -63,7 +61,7 @@ namespace com.prueba.jair.BLL.logic
             return response;
         }
 
-        public void SetObjectResponse(object obj, MessageModel message)
+        public void SetObjectResponse<T>(T obj, MessageModel message)
         {
             try
             {
@@ -92,7 +90,7 @@ namespace com.prueba.jair.BLL.logic
             }
         }
 
-        public void SetListResponse(List<object> list, MessageModel message)
+        public void SetListResponse<T>(List<T> list, MessageModel message)
         {
             try
             {
