@@ -80,7 +80,7 @@ namespace com.prueba.jair.BLL.logic
             return response;
         }
 
-        public ResponseModel GetByNit(decimal nit = 0)
+        public ResponseModel GetByNit(long nit = 0)
         {
             var message = new MessageModel();
 

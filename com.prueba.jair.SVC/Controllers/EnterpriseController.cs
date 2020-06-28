@@ -25,15 +25,16 @@ namespace com.prueba.jair.SVC.Controllers
             return StatusCode((int)response.Status, response);
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    var response = enterpriseBll.GetById(id);
-        //    return StatusCode((int)response.Status, response);
-        //}
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var response = enterpriseBll.GetById(id);
+            return StatusCode((int)response.Status, response);
+        }
 
-        [HttpGet("{nit}")]
-        public IActionResult GetByNit(decimal nit)
+        [Route("bynit/{nit}")]
+        [HttpGet]
+        public IActionResult GetByNit(long nit)
         {
             var response = enterpriseBll.GetByNit(nit);
             return StatusCode((int)response.Status, response);

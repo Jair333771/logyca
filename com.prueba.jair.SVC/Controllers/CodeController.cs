@@ -1,6 +1,5 @@
 ﻿using System.Runtime.Serialization;
 using com.prueba.jair.BLL.logic;
-using com.prueba.jair.Core.interfaces;
 using com.prueba.jair.DAL.context;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +11,7 @@ namespace com.prueba.jair.SVC.Controllers
     [DataContract]
     public class CodeController : ControllerBase
     {
-        protected IBussinessLogic codeBll;
+        protected CodeBll codeBll;
 
         public CodeController(ApiDbContext context)
         {
@@ -26,10 +25,18 @@ namespace com.prueba.jair.SVC.Controllers
             return StatusCode((int)response.Status, response);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        [Route("ownerid/{ownerid}")]
+        [HttpGet]
+        public IActionResult GetByOwnerId(int ownerid)
         {
-            var response = codeBll.GetById(id);
+            var response = codeBll.GetAllByOwnerId(ownerid);
+            return StatusCode((int)response.Status, response);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetEnterpriseByCodeId(int codeid)
+        {
+            var response = codeBll.GetById(codeid);
             return StatusCode((int)response.Status, response);
         }
     }

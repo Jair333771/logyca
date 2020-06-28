@@ -13,11 +13,11 @@ namespace com.prueba.jair.DAL.Repository
             this.context = context;
         }
 
-        public Enterprise GetByNit(decimal nit)
+        public Enterprise GetByNit(long nit)
         {
             var obj = context.Enterprises
-                 .Where(x => x.Id == nit)
-                 .Include(x => x.CodeList).ToList()
+                 .Include(x => x.CodeList)
+                 .Where(x => x.Nit == nit)
                  .FirstOrDefault();
 
             return obj;
